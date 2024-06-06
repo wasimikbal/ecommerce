@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'sanity_ecommerce',
 
-  projectId: 'ge8jqtyf',
+  projectId: 'eexp1vol',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
