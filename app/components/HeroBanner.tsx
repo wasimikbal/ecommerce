@@ -45,21 +45,19 @@ const HeroBanner: React.FC<BannerProps> =  ({
 
 
   return (
-    <div className="px-10 py-4 bg-gray-200 rounded-lg relative h-[500px] leading-9">
+    <div className="hero-banner-container">
       <div>
-        <p className='text-[20px] mt-50 text-black'>{smallText}</p>
-        <h3 className="text-5xl text-black font-bold">{midText}</h3>
-        <h1 className="text-9xl text-black font-bold">{largeText1}</h1>
-        <img className="absolute top-0 right-20 w-21 h-21 mr-30" src={urlFor(image).toString()} alt='headphones'/>
+        <p className="beats-solo">{smallText}</p>
+        <h3>{midText}</h3>
+        <h1>{largeText1}</h1>
+        <img src={urlFor(image).toString()} alt="headphones" className="hero-banner-image" />
 
         <div>
-          <Link href={`/Product/${product}`}>
-            <button type='button' className="rounded-lg px-4 py-2 mt-8 bg-red-500 text-white font-medium focus:outline-none hover:bg-red-700 z-10000">
-              {buttonText}</button>
+          <Link href={`/product/${product}`}>
+            <button type="button">{buttonText}</button>
           </Link>
-
-          <div className="absolute right-10 bottom-5 w-30 lg:w-60 flex flex-col text-gray-700 leading-loose">
-            <h5 className='text-black font-bold'>DESCRIPTION</h5>
+          <div className="desc">
+            <h5>Description</h5>
             <p>{desc}</p>
           </div>
         </div>
