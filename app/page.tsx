@@ -3,10 +3,11 @@
 import './globals.css';
 import { client } from '@/lib/client';
 import {groq} from 'next-sanity'
-import { HeroBanner } from './components';
+import { FooterBanner, HeroBanner } from './components';
 import { GetServerSideProps } from 'next';
-import { Product } from '@/types/product';
-import { Banner } from '@/types/banner';
+import { Product as ProductType } from '@/types/product';
+import {Product} from './components'
+import { revalidateTag } from 'next/cache';
 
 export default async function Home() {
 
@@ -18,11 +19,13 @@ export default async function Home() {
 
     <div className="products-heading">
       <h2>Best Seller Products</h2>
-      <p className="">Speaker There are many variation packages</p>
-      <div className=''>
-        {products?.map((product: Product)=> product.name)}
+      <p>There are many variation packages</p>
+      <div className='products-container'>
+        {products?.map((product: ProductType)=> <Product key={product._id}{...product}/>)}
       </div>
     </div>
+
+    <FooterBanner {...bannerData[0]}/>
     </>
   );
 
@@ -31,6 +34,7 @@ export default async function Home() {
 }
 
 const getProducts = async () => {
+  revalidateTag('product')
   return await client.fetch(groq `*[_type == "product"]`)
 }
 
