@@ -14,8 +14,13 @@ interface ProductDetailsProps {
 const ProductDetails: React.FC<ProductDetailsProps> = ({product, productList}) => {
     const {name, details, price, image} = product;
     const [index, setIndex] = useState<number>(0);
-    const {cartItems, qty, inqQty, decQty, onAddToCart} = useProductsContext();
- 
+    const {cartItems, qty, inqQty, decQty, onAddToCart, setShowCart} = useProductsContext();
+  
+
+    const handleBuyNow = (product, qty) => {
+        onAddToCart(product, qty);
+        setShowCart(true);
+    }
   return (
     
     <div>
@@ -63,7 +68,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({product, productList}) =
           </div>
           <div className="buttons">
             <button type="button" className="add-to-cart" onClick={() => {onAddToCart(product, qty)}}>Add to Cart</button>
-            <button type="button" className="buy-now" onClick={()=>{}}>Buy Now</button>
+            <button type="button" className="buy-now" onClick={()=>handleBuyNow(product, qty)}>Buy Now</button>
           </div>
         </div>
       </div>

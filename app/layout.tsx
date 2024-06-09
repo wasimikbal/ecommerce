@@ -18,14 +18,14 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
       <head>
         <title>Ecommerce Shop</title>
       </head>
-      <body className={inter.className}>
-        <StateContext>
+      <StateContext>
+        <body className={inter.className}>
           <Navbar />
           <Toaster />
           {children}
           <Footer />
-        </StateContext>
-      </body>
+        </body>
+      </StateContext>
     </html>
   );
 }
