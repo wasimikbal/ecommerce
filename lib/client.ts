@@ -3,13 +3,14 @@
 import { createClient, type QueryParams } from "next-sanity";
 import imageUrlBuilder from '@sanity/image-url';
 import { SanityImageSource } from "@sanity/image-url/lib/types/types"
-import { projectId, dataset, apiVersion, useCdn } from "./env";
+import { projectId, dataset, apiVersion, useCdn, } from "./env";
 
 export const client = createClient({
   projectId: projectId,
   dataset: dataset,
   apiVersion: apiVersion,
-  useCdn: useCdn
+  useCdn: useCdn,
+  token: 'skTtChPWO0dL5T9AtFzOowNlB98RjluCPjx0hhoOfSBKsXyiFVFW0qLzsI5ScfKigUPXfQAdY6JLIwIKCNtfjpdMTG5RIMmZ49TcZxGkxArCjhEZ7Vss1Gc5NAtafSLY5elhWvvWTUPALhHZp8pJ81109VOK4UY0QRtazMV4Lebbf8RnYPbS'
 });
 
 const builder = imageUrlBuilder(client);

@@ -19,6 +19,7 @@ export interface Image {
     name: string;
     slug: Slug;
     price: number;
+    availableQty: number;
     details: string;
     image: Image[];
   }

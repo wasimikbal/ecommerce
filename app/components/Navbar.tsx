@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { AiOutlineShopping } from 'react-icons/ai'
 import Cart from './Cart'
 import { useProductsContext } from '@/context/StateContext'
+import CartServer from './CartServer'
 
 const Navbar = () => {
   const {showCart, setShowCart, totalQuantities} = useProductsContext();
@@ -20,7 +21,7 @@ const Navbar = () => {
         <AiOutlineShopping/>
         <span className='cart-item-qty'>{totalQuantities}</span>
       </button>
-      {showCart && <Cart/>}
+      {showCart && <CartServer/>}
     </div>
   )
 }

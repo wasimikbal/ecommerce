@@ -10,11 +10,14 @@ import { useProductsContext } from '@/context/StateContext'
 import { urlFor } from '@/lib/client'
 import Link from 'next/link'
 import { url } from 'inspector'
+import getStripe from '@/lib/getStripe'
 
-const Cart = () => {
+const Cart = ({handleCheckout, updateProductQty}) => {
   const cartRef = useRef();
   const { totalPrice, totalQuantities, cartItems,
     setShowCart, toggleCartItemsQuantity, onRemoveFromCart } = useProductsContext();
+    
+
   return (
     <div className='cart-wrapper' ref={cartRef}>
       <div className="cart-container">
@@ -71,7 +74,7 @@ const Cart = () => {
               <h3>${totalPrice}</h3>
             </div>
             <div className="btn-container">
-              <button type='button' className='btn'>
+              <button type='button' className='btn' onClick={()=>handleCheckout(cartItems)}>
                 Pay with Stripe
               </button>
             </div>
